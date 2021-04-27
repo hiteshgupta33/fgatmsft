@@ -1,3 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Screen Margins Start-->
+    <dimen name="margin_default">12dp</dimen>
+    <dimen name="margin_vertical_default">12dp</dimen>
+    <dimen name="margin_horizontal_default">12dp</dimen>
+    <dimen name="margin_vertical_large">16dp</dimen>
+    <!-- Screen Margins End-->
+
+    <!-- Avatar Region Start-->
+    <dimen name="signup_display_pic_width">120dp</dimen>
+    <dimen name="signup_display_pic_height">160dp</dimen>
+    <!-- Avatar Region End-->
+
+    <dimen name="signup_title_text_size">30sp</dimen>
+    <dimen name="signup_subtitle_text_size">14sp</dimen>
+    <dimen name="signup_cta_text_size">16sp</dimen>
 </resources>
