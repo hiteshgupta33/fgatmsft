@@ -32,6 +32,11 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    // Enable view binding for simple use cases.
+    viewBinding {
+        enabled = true
+    }
 }
 
 dependencies {
@@ -43,6 +48,9 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$android.appCompact"
     implementation "com.google.android.material:material:$dependencies.material"
 
+    // Provides shared view model capabilities
+    implementation "androidx.lifecycle:lifecycle-extensions:$dependencies.lifecycleExtensions"
+    
     // Test dependencies
     testImplementation "junit:junit:$dependencies.junit"
     testImplementation "androidx.test.ext:junit:$dependencies.extJunit"

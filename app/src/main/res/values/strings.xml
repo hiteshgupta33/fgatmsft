@@ -2,6 +2,19 @@
     <string name="app_name">Signmeup</string>
     <string name="title_activity_sign_up">SignUpActivity</string>
 
+    <!--Sign up form-->
+    <string name="signup_title_text">Profile Creation</string>
+    <string name="signup_subtitle_text">Use the form below to submit your portfolio.\nAn email and password are required</string>
+    <string name="add_avatar_text">Tap to add avatar</string>
+    <string name="user_first_name">First Name</string>
+    <string name="user_email">Email Address</string>
+    <string name="user_password">Password</string>
+    <string name="user_website">Website</string>
+    <string name="signup_submit">Submit</string>
+
+    <!--   Content Description-->
+    <string name="display_pic_content_description">Display picture visible on the profile</string>
+
     <!--   Error Strings-->
     <string name="email_error">Not a valid email</string>
     <string name="password_error">Too short</string>

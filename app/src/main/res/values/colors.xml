@@ -7,4 +7,10 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Sign Up screen colors   -->
+    <color name="signup_grey_fifty">#9B9B9B</color>
+    <color name="signup_cta_button_start">#FF4817</color>
+    <color name="signup_cta_button_end">#FF234B</color>
+    <color name="signup_cta_button_stroke">#FF234B</color>
 </resources>
