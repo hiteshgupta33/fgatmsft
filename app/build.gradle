@@ -46,5 +46,9 @@ dependencies {
     // Test dependencies
     testImplementation "junit:junit:$dependencies.junit"
     testImplementation "androidx.test.ext:junit:$dependencies.extJunit"
+    testImplementation "io.mockk:mockk:$dependencies.mockk"
+    testImplementation "androidx.arch.core:core-testing:$dependencies.corextest"
+
+    // Android test dependencies
     androidTestImplementation "androidx.test.espresso:espresso-core:$dependencies.espresso"
 }

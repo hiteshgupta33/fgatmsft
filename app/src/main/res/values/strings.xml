@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Signmeup</string>
+    <string name="title_activity_sign_up">SignUpActivity</string>
+
+    <!--   Error Strings-->
+    <string name="email_error">Not a valid email</string>
+    <string name="password_error">Too short</string>
+    <string name="signup_error">Information invalid</string>
 </resources>
