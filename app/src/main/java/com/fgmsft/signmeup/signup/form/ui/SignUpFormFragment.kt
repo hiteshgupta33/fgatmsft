@@ -7,11 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.fgmsft.signmeup.databinding.SignUpFormBinding
 import com.fgmsft.signmeup.signup.form.SignUpFormViewModel
+import com.fgmsft.signmeup.signup.SignUpBaseViewModel
 import com.fgmsft.signmeup.signup.model.SignUpForm
 
 /**
@@ -24,7 +24,7 @@ import com.fgmsft.signmeup.signup.model.SignUpForm
  * create an instance of this fragment.
  *
  */
-class SignUpFormFragment: Fragment() {
+class SignUpFormFragment: SignUpFormAvatarFragment() {
     // Using view binding as this is a simple case but it provides null and type safety.
     // Remember to destroy binding when view is destroyed
     private var _binding: SignUpFormBinding? = null
@@ -68,6 +68,7 @@ class SignUpFormFragment: Fragment() {
         // Setup views and listeners
         setupTextWatchers()
         setupSignUpBtn()
+        setupAvatarCapture()
     }
 
     /**
@@ -140,6 +141,43 @@ class SignUpFormFragment: Fragment() {
     }
 
     /**
+     * Setup capture of the avatar. This function sets OnClick listener on the avatarBtn.
+     * When user clicks on the button, it calls to handle the permissions
+     *
+     */
+    private fun setupAvatarCapture() {
+        binding.avatarBtn.setOnClickListener {
+            handleAvatarCaptureRequest()
+        }
+    }
+
+    /**
+     * This function will request view model to create the Bitmap and observe to the changes.
+     */
+    override fun loadAvatar(avatarPath: String?) {
+        observeAvatarBitmap()
+        signUpFormViewModel.createBitmap(binding.imageContainer.width, binding.imageContainer.height, avatarPath)
+    }
+
+    /**
+     * Observe the changes to the [SignUpBaseViewModel._avatarBitmap].
+     * Once avatar is created, show it on the view.
+     *
+     */
+    private fun observeAvatarBitmap() {
+        signUpFormViewModel.avatarBitmap.observe(viewLifecycleOwner, { _bitmap ->
+            if (_bitmap == null) {
+                binding.avatarBtn.visibility = View.VISIBLE
+                binding.avatarView.visibility = View.GONE
+            } else {
+                binding.avatarView.setImageBitmap(_bitmap)
+                binding.avatarBtn.visibility = View.GONE
+                binding.avatarView.visibility = View.VISIBLE
+            }
+        })
+    }
+
+    /**
      * Extension function for Edit Text watcher
      */
     private fun EditText.afterTextChanged(afterTextChanged: (String) -> Unit) {
@@ -156,5 +194,10 @@ class SignUpFormFragment: Fragment() {
                 /* Don't do anything */
             }
         })
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }

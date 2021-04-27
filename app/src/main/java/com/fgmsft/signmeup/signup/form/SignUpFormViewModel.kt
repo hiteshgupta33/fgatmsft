@@ -3,8 +3,8 @@ package com.fgmsft.signmeup.signup.form
 import androidx.core.util.PatternsCompat
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.fgmsft.signmeup.R
+import com.fgmsft.signmeup.signup.SignUpBaseViewModel
 import com.fgmsft.signmeup.signup.event.FgEvent
 import com.fgmsft.signmeup.signup.event.SignUpEvents
 import com.fgmsft.signmeup.signup.form.model.SignUpFormState
@@ -15,7 +15,7 @@ import com.fgmsft.signmeup.signup.model.SignUpForm
  *
  * This class is responsible for validating the form fields, calling the sign up service.
  */
-class SignUpFormViewModel : ViewModel() {
+class SignUpFormViewModel : SignUpBaseViewModel() {
 
     companion object {
         // Minimum required length of the password
