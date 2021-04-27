@@ -13,7 +13,6 @@ import io.mockk.verify
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import org.mockito.ArgumentMatchers
 
 class SignUpFormViewModelTest {
 
@@ -89,7 +88,7 @@ class SignUpFormViewModelTest {
         signUpViewModel.validatePassword(validPassword)
 
         verify {
-            signUpformStateObserver.onChanged(SignUpFormState(passwordError = ArgumentMatchers.anyInt(), isDataValid = false))
+            signUpformStateObserver.onChanged(SignUpFormState(passwordError = R.string.password_error, isDataValid = false))
         }
 
         signUpViewModel.signupState.removeObserver(signUpformStateObserver)
@@ -114,7 +113,7 @@ class SignUpFormViewModelTest {
     }
 
     @Test
-    fun `sign up success test`() {
+    fun `sign up user success test`() {
         val signUpViewModel = SignUpFormViewModel()
 
         signUpViewModel.signUpEvents.observeForever(signUpEventObserver)
@@ -126,5 +125,18 @@ class SignUpFormViewModelTest {
         }
 
         signUpViewModel.signUpEvents.removeObserver(signUpEventObserver)
+    }
+
+    @Test
+    fun `sign up user error test`() {
+        val signUpViewModel = SignUpFormViewModel()
+
+        signUpViewModel.signUpEvents.observeForever(signUpEventObserver)
+
+        signUpViewModel.signUpUser(null)
+
+        verify {
+            signUpEventObserver.onChanged(SignUpEvents.Error(R.string.signup_error))
+        }
     }
 }
