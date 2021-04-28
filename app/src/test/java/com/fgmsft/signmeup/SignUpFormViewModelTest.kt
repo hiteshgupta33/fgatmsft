@@ -136,7 +136,7 @@ class SignUpFormViewModelTest {
         signUpViewModel.signUpUser(null)
 
         verify {
-            signUpEventObserver.onChanged(SignUpEvents.Error(R.string.signup_error))
+            signUpEventObserver.onChanged(SignUpEvents.Error(R.string.signup_fields_error))
         }
     }
 }

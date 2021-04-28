@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
+import com.fgmsft.signmeup.R
 import com.fgmsft.signmeup.signup.form.avatar.AvatarCameraProvider
 import com.fgmsft.signmeup.signup.form.avatar.AvatarManager
 import com.fgmsft.signmeup.signup.permission.PermissionChecker
@@ -28,7 +29,8 @@ abstract class SignUpFormAvatarFragment: Fragment() {
 
     protected lateinit var avatarManager: AvatarManager
 
-    private var avatarAbsPath: String? = null
+    val avatarAbsPath: String?
+        get() = avatarManager.getAvatarPath()
 
     companion object {
         private const val REQUEST_PERMISSION_CODE = 999
@@ -91,7 +93,7 @@ abstract class SignUpFormAvatarFragment: Fragment() {
             }
 
             avatarFile?.also {
-                val avatarURI: Uri = FileProvider.getUriForFile(context!!, "com.fgmsft.signmeup.fileprovider", it)
+                val avatarURI: Uri = FileProvider.getUriForFile(context!!, getString(R.string.signup_avatar_authority), it)
                 avatarCaptureIntent.putExtra(MediaStore.EXTRA_OUTPUT, avatarURI)
                 startActivityForResult(avatarIntent, REQUEST_IMAGE_CAPTURE)
             }

@@ -11,11 +11,19 @@
     <string name="user_website">Website</string>
     <string name="signup_submit">Submit</string>
 
+    <!--  Avatar  -->
+    <string name="signup_avatar_authority">com.fgmsft.signmeup.fileprovider</string>
     <!--   Content Description-->
     <string name="display_pic_content_description">Display picture visible on the profile</string>
 
     <!--   Error Strings-->
     <string name="email_error">Not a valid email</string>
     <string name="password_error">Too short</string>
-    <string name="signup_error">Information invalid</string>
+    <string name="signup_fields_error">Information invalid</string>
+    <string name="signup_error">We are unable to process the request, Try again in some time!</string>
+
+    <!--  Sign up confirmation  -->
+    <string name="signIn">Sign In</string>
+    <string name="confirmation_title_text">Hey, %1$s</string>
+    <string name="confirmation_subtitle_text">Your super-awesome portfolio has been successfully submitted! The preview below us what the community will see!</string>
 </resources>

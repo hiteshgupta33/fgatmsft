@@ -1,5 +1,8 @@
 package com.fgmsft.signmeup.signup.model
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
 /**
  * Data class to hold the user sign up information.
  *
@@ -9,6 +12,7 @@ package com.fgmsft.signmeup.signup.model
  * @param website - Optional
  * @param avatarPath - Optional
  */
+@Parcelize
 data class SignUpForm(
     /**
      * First name of the user
@@ -34,4 +38,4 @@ data class SignUpForm(
      * Path to the avatar picture
      */
     val avatarPath: String? = null
-)
+): Parcelable

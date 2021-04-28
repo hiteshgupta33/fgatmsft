@@ -131,7 +131,8 @@ class SignUpFormFragment: SignUpFormAvatarFragment() {
                 firstName = binding.firstName.text.toString(),
                 email = binding.email.text.toString(),
                 password = binding.password.text.toString(),
-                website = binding.website.text.toString()
+                website = binding.website.text.toString(),
+                avatarPath = avatarAbsPath
             )
 
             // Ask view model to sign up the user with the given information.

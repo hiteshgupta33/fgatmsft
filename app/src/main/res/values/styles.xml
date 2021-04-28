@@ -36,4 +36,19 @@
         <item name="android:textSize">@dimen/signup_cta_text_size</item>
     </style>
 
+    <!-- Confirmation Field style   -->
+    <style name="ConfirmationFieldStyle">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/confirmation_field_text_size</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <!-- Confirmation linkable field style   -->
+    <style name="ConfirmationLinkedFieldStyle">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/confirmation_field_text_size</item>
+        <item name="android:autoLink">all</item>
+        <item name="android:clickable">true</item>
+        <item name="android:gravity">center</item>
+    </style>
 </resources>
