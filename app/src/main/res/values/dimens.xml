@@ -15,4 +15,7 @@
     <dimen name="signup_title_text_size">30sp</dimen>
     <dimen name="signup_subtitle_text_size">14sp</dimen>
     <dimen name="signup_cta_text_size">16sp</dimen>
+
+    <!--  Confirmation flow  -->
+    <dimen name="confirmation_field_text_size">16sp</dimen>
 </resources>

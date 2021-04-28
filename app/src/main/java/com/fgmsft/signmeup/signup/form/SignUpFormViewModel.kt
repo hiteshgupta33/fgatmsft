@@ -68,7 +68,7 @@ class SignUpFormViewModel : SignUpBaseViewModel() {
      */
     fun signUpUser(signUpForm: SignUpForm?) {
         if (signUpForm == null) {
-            _events.value = SignUpEvents.Error(R.string.signup_error)
+            _events.value = SignUpEvents.Error(R.string.signup_fields_error)
         } else {
             _events.value = SignUpEvents.Success(signUpForm)
         }

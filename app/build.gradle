@@ -1,6 +1,9 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+
+    // used to generate the boiler plate code for parcelable.
+    id 'kotlin-android-extensions'
 }
 
 android {

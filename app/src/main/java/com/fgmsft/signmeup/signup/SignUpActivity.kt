@@ -1,10 +1,12 @@
 package com.fgmsft.signmeup.signup
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.fgmsft.signmeup.R
+import com.fgmsft.signmeup.signup.confirmation.SignUpConfirmationFragment
 import com.fgmsft.signmeup.signup.event.SignUpEvents
 import com.fgmsft.signmeup.signup.form.SignUpFormViewModel
 import com.fgmsft.signmeup.signup.form.ui.SignUpFormFragment
@@ -21,7 +23,7 @@ class SignUpActivity : AppCompatActivity() {
         setContentView(R.layout.activity_sign_up)
 
         signUpViewModel = ViewModelProvider(this).get(SignUpFormViewModel::class.java)
-        observeEvents()
+        observeSignUpEvents()
 
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
@@ -35,16 +37,20 @@ class SignUpActivity : AppCompatActivity() {
      * Observe to the SignUp Events [SignUpEvents]. The events can be easily extended
      * to other events such as loading to show progress, more error states.
      */
-    private fun observeEvents() {
+    private fun observeSignUpEvents() {
         signUpViewModel.signUpEvents.observe(this, Observer {
             it.getIfNotHandled()?.let { _event ->
                 when (_event) {
                     is SignUpEvents.Success -> {
-                        TODO("Show confirmation page")
+                        // Ideally data should be retrieved by the fragment via data store and only identifiers should
+                        // be sent to the fragment. That would also remove the requirement of making the data class parcelable.
+                        supportFragmentManager.beginTransaction()
+                            .replace(R.id.container, SignUpConfirmationFragment.newInstance(_event.signUpForm))
+                            .commitNow()
                     }
 
                     is SignUpEvents.Error -> {
-                        TODO("Show error message")
+                        Toast.makeText(this, getString(R.string.signup_error), Toast.LENGTH_SHORT).show()
                     }
                 }
             }

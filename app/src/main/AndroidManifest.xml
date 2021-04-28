@@ -24,7 +24,7 @@
         </activity>
 
         <provider
-            android:authorities="com.fgmsft.signmeup.fileprovider"
+            android:authorities="@string/signup_avatar_authority"
             android:name="androidx.core.content.FileProvider"
             android:exported="false"
             android:grantUriPermissions="true">
