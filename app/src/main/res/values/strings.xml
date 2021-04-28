@@ -1,6 +1,5 @@
 <resources>
-    <string name="app_name">Signmeup</string>
-    <string name="title_activity_sign_up">SignUpActivity</string>
+    <string name="app_name">Sign me up</string>
 
     <!--Sign up form-->
     <string name="signup_title_text">Profile Creation</string>
