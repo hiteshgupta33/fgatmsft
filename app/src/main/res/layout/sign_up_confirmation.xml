@@ -79,7 +79,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/margin_vertical_default"
         android:text="@string/signIn"
-        style="@style/SignUpCtaMaterialStyle"
+        style="@style/Widget.App.SignUpCtaMaterialStyle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
