@@ -14,11 +14,15 @@
     </style>
 
     <!-- Avatar Button style   -->
-    <style name="SignUpAvatarBtnStyle">
+    <style name="SignUpAvatarBtnStyle" parent="Widget.MaterialComponents.Button">
         <item name="android:layout_width">@dimen/signup_display_pic_width</item>
         <item name="android:layout_height">@dimen/signup_display_pic_height</item>
         <item name="android:background">@color/signup_grey_fifty</item>
+        <item name="materialThemeOverlay">@style/GreyButtonThemeOverlay</item>
+    </style>
 
+    <style name="GreyButtonThemeOverlay">
+        <item name="colorPrimary">@color/signup_grey_fifty</item>
     </style>
 
     <!-- Avatar View style   -->
@@ -28,12 +32,13 @@
         <item name="android:scaleType">fitXY</item>
     </style>
 
-    <!-- Signup Cta style   -->
-    <style name="SignUpCtaMaterialStyle" parent="Widget.MaterialComponents.Button.OutlinedButton">
-        <item name="android:textColor">@color/white</item>
-        <item name="colorButtonNormal">@color/signup_cta_button_end</item>
-        <item name="backgroundTint">@color/signup_cta_button_start</item>
-        <item name="android:textSize">@dimen/signup_cta_text_size</item>
+    <style name="Widget.App.SignUpCtaMaterialStyle"
+        parent="Widget.MaterialComponents.Button">
+        <item name="materialThemeOverlay">@style/RedButtonThemeOverlay</item>
+    </style>
+
+    <style name="RedButtonThemeOverlay">
+        <item name="colorPrimary">@color/signup_cta_button_end</item>
     </style>
 
     <!-- Confirmation Field style   -->

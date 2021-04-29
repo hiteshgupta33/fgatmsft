@@ -140,7 +140,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/submit"
-        style="@style/SignUpCtaMaterialStyle"
+        style="@style/Widget.App.SignUpCtaMaterialStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/margin_vertical_default"
