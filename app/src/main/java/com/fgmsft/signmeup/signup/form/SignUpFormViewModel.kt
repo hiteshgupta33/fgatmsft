@@ -9,6 +9,7 @@ import com.fgmsft.signmeup.signup.event.FgEvent
 import com.fgmsft.signmeup.signup.event.SignUpEvents
 import com.fgmsft.signmeup.signup.form.model.SignUpFormState
 import com.fgmsft.signmeup.signup.model.SignUpForm
+import java.util.regex.Pattern
 
 /**
  * View Model to handle the validation of the sign up screen.
@@ -20,6 +21,8 @@ class SignUpFormViewModel : SignUpBaseViewModel() {
     companion object {
         // Minimum required length of the password
         private const val passwordLengthMin = 6
+
+        private const val PASSWORD_PATTERN = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{$passwordLengthMin,}$"
     }
 
     // Create a Mutable Live data so that view can listen to the form fields states.
@@ -43,7 +46,12 @@ class SignUpFormViewModel : SignUpBaseViewModel() {
      * @param email
      */
     fun validateEmail(email: String?) {
-        validEmail = !email.isNullOrEmpty() && PatternsCompat.EMAIL_ADDRESS.matcher(email).matches()
+        // If the value passed is null/empty, there is nothing to validate
+        if (email.isNullOrEmpty()) {
+            return
+        }
+
+        validEmail = PatternsCompat.EMAIL_ADDRESS.matcher(email).matches()
 
         _signupForm.value = SignUpFormState(emailError = (if (validEmail) null else R.string.email_error), isDataValid = validateForm())
     }
@@ -52,7 +60,11 @@ class SignUpFormViewModel : SignUpBaseViewModel() {
      * Validate the password as per the defined logic
      */
     fun validatePassword(password: String?) {
-        validPassword = !password.isNullOrEmpty() && password.length > passwordLengthMin
+        if (password.isNullOrEmpty()) {
+            return
+        }
+
+        validPassword = Pattern.compile(PASSWORD_PATTERN).matcher(password).matches()
 
         _signupForm.value = SignUpFormState(passwordError = (if (validPassword) null else R.string.password_error), isDataValid = validateForm())
     }

@@ -8,11 +8,14 @@ import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.fgmsft.signmeup.R
+import com.fgmsft.signmeup.signup.form.SignUpFormViewModel
 import com.fgmsft.signmeup.signup.form.avatar.AvatarCameraProvider
 import com.fgmsft.signmeup.signup.form.avatar.AvatarManager
 import com.fgmsft.signmeup.signup.permission.PermissionChecker
@@ -27,10 +30,13 @@ import java.io.IOException
  */
 abstract class SignUpFormAvatarFragment: Fragment() {
 
-    protected lateinit var avatarManager: AvatarManager
+    /**
+     * View Model for handling signup flow.
+     */
+    private lateinit var signUpAvatarViewModel: SignUpAvatarViewModel
 
     val avatarAbsPath: String?
-        get() = avatarManager.getAvatarPath()
+        get() = signUpAvatarViewModel.getAvatarPath()
 
     companion object {
         private const val REQUEST_PERMISSION_CODE = 999
@@ -42,7 +48,13 @@ abstract class SignUpFormAvatarFragment: Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        avatarManager = AvatarCameraProvider()
+
+        signUpAvatarViewModel = ViewModelProvider(this).get(SignUpAvatarViewModel::class.java)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        loadAvatar(signUpAvatarViewModel.getAvatarPath())
     }
 
     /**
@@ -82,12 +94,12 @@ abstract class SignUpFormAvatarFragment: Fragment() {
      */
     private fun sendAvatarIntent() {
         Toast.makeText(context, "Capture Avatar", Toast.LENGTH_SHORT).show()
-        val avatarCaptureIntent = avatarManager.getAvatarIntent()
+        val avatarCaptureIntent = signUpAvatarViewModel.getAvatarIntent()
 
         avatarCaptureIntent.also { avatarIntent ->
             val avatarFile: File? = try {
                 val storageDir: File? = activity?.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
-                avatarManager.createAvatarFile(storageDir)
+                signUpAvatarViewModel.createAvatarFile(storageDir)
             } catch (exception: IOException) {
                 null
             }
@@ -122,15 +134,15 @@ abstract class SignUpFormAvatarFragment: Fragment() {
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == Activity.RESULT_OK) {
 
             // Image is captured, let's load the avatar and show it on the screen.
-            loadAvatar(avatarManager.getAvatarPath())
+            loadAvatar(signUpAvatarViewModel.getAvatarPath())
         }
     }
 
     protected fun handleAvatarCaptureRequest() {
-        val permissionName = avatarManager.getRequiredAvatarPermission()
+        val permissionName = signUpAvatarViewModel.getRequiredAvatarPermission()
         if (permissionName.isNullOrEmpty()) {
             // No permission required, continue the work.
-            loadAvatar(avatarManager.getAvatarPath())
+            loadAvatar(signUpAvatarViewModel.getAvatarPath())
         } else {
             handlePermissionRequests(permissionName)
         }

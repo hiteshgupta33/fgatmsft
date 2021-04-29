@@ -1,5 +1,6 @@
 package com.fgmsft.signmeup.signup
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -20,6 +21,13 @@ class SignUpActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val displayMode = resources.configuration.orientation
+
+        if (displayMode == Configuration.ORIENTATION_LANDSCAPE) {
+            supportActionBar!!.hide()
+        }
+
         setContentView(R.layout.activity_sign_up)
 
         signUpViewModel = ViewModelProvider(this).get(SignUpFormViewModel::class.java)
@@ -45,12 +53,16 @@ class SignUpActivity : AppCompatActivity() {
                         // Ideally data should be retrieved by the fragment via data store and only identifiers should
                         // be sent to the fragment. That would also remove the requirement of making the data class parcelable.
                         supportFragmentManager.beginTransaction()
-                            .replace(R.id.container, SignUpConfirmationFragment.newInstance(_event.signUpForm))
+                            .replace(
+                                R.id.container,
+                                SignUpConfirmationFragment.newInstance(_event.signUpForm)
+                            )
                             .commitNow()
                     }
 
                     is SignUpEvents.Error -> {
-                        Toast.makeText(this, getString(R.string.signup_error), Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, getString(R.string.signup_error), Toast.LENGTH_SHORT)
+                            .show()
                     }
                 }
             }

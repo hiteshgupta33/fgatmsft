@@ -3,7 +3,7 @@
 
     <!--Sign up form-->
     <string name="signup_title_text">Profile Creation</string>
-    <string name="signup_subtitle_text">Use the form below to submit your portfolio.\nAn email and password are required</string>
+    <string name="signup_subtitle_text">Use the form below to submit your portfolio. An email and password are required</string>
     <string name="add_avatar_text">Tap to add avatar</string>
     <string name="user_first_name">First Name</string>
     <string name="user_email">Email Address</string>
@@ -18,7 +18,7 @@
 
     <!--   Error Strings-->
     <string name="email_error">Not a valid email</string>
-    <string name="password_error">Too short</string>
+    <string name="password_error">Too weak!</string>
     <string name="signup_fields_error">Information invalid</string>
     <string name="signup_error">We are unable to process the request, Try again in some time!</string>
 

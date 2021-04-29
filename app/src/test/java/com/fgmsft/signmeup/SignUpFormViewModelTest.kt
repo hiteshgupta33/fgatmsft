@@ -64,7 +64,7 @@ class SignUpFormViewModelTest {
 
     @Test
     fun `valid password test`() {
-        val validPassword = "asdsad!%#ijsdjs"
+        val validPassword = "As12dsad!%#ijsdjs"
 
         val signUpViewModel = SignUpFormViewModel()
 
@@ -97,7 +97,7 @@ class SignUpFormViewModelTest {
     @Test
     fun `valid form test`() {
         val validEmail = "myvalidemail@myvalidemail.com"
-        val validPassword = "asdsad!%#ijsdjs"
+        val validPassword = "Asdsad!%#ijsdjs12"
 
         val signUpViewModel = SignUpFormViewModel()
 

@@ -5,6 +5,7 @@
     <dimen name="margin_vertical_default">12dp</dimen>
     <dimen name="margin_horizontal_default">12dp</dimen>
     <dimen name="margin_vertical_large">16dp</dimen>
+    <dimen name="margin_vertical_small">6dp</dimen>
     <!-- Screen Margins End-->
 
     <!-- Avatar Region Start-->
