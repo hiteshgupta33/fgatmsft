@@ -29,6 +29,7 @@
         app:layout_constraintTop_toBottomOf="@+id/titleText" />
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/avatarCardView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/margin_vertical_large"
@@ -45,7 +46,6 @@
             style="@style/SignUpAvatarViewStyle"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="centerCrop"
             android:contentDescription="@string/display_pic_content_description"
             android:src="@drawable/default_avatar"
             app:layout_constraintHeight_percent="@dimen/signup_avatar_height_port"
@@ -61,7 +61,7 @@
         android:orientation="vertical"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/avatarView">
+        app:layout_constraintTop_toBottomOf="@+id/avatarCardView">
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/website"
