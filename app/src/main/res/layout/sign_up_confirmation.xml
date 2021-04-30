@@ -9,77 +9,90 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/titleText"
+        style="@style/SignUpTitleTextStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/signup_title_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        style="@style/SignUpTitleTextStyle"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/subTitleText"
+        style="@style/SignUpSubTitleTextStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_vertical_default"
         android:text="@string/confirmation_subtitle_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleText"
-        style="@style/SignUpSubTitleTextStyle"/>
+        app:layout_constraintTop_toBottomOf="@+id/titleText" />
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/avatarView"
-        android:layout_width="@dimen/signup_display_pic_width"
-        android:layout_height="@dimen/signup_display_pic_height"
+    <androidx.cardview.widget.CardView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/margin_vertical_large"
+        android:elevation="@dimen/signup_avatar_elevation"
+        app:cardCornerRadius="@dimen/signup_avatar_corner_radius"
+        app:layout_constraintHeight_percent="@dimen/signup_avatar_height_port"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/subTitleText"
-        android:layout_marginTop="@dimen/margin_vertical_large"
-        android:contentDescription="@string/display_pic_content_description"
-        style="@style/SignUpAvatarViewStyle"
-        android:src="@drawable/default_avatar"/>
+        app:layout_constraintWidth_percent="@dimen/signup_avatar_width_port">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/avatarView"
+            style="@style/SignUpAvatarViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:contentDescription="@string/display_pic_content_description"
+            android:src="@drawable/default_avatar"
+            app:layout_constraintHeight_percent="@dimen/signup_avatar_height_port"
+            app:layout_constraintWidth_percent="@dimen/signup_avatar_width_port" />
+    </androidx.cardview.widget.CardView>
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_vertical_default"
+        android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/avatarView"
-        android:gravity="center">
+        app:layout_constraintTop_toBottomOf="@+id/avatarView">
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/website"
+            style="@style/ConfirmationLinkedFieldStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="gone"
-            style="@style/ConfirmationLinkedFieldStyle"/>
+            android:visibility="gone" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/firstName"
+            style="@style/ConfirmationFieldStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="gone"
-            style="@style/ConfirmationFieldStyle"/>
+            android:visibility="gone" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/email"
+            style="@style/ConfirmationFieldStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="gone"
-            style="@style/ConfirmationFieldStyle"/>
+            android:visibility="gone" />
 
     </LinearLayout>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/login"
+        style="@style/Widget.App.SignUpCtaMaterialStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/margin_vertical_default"
         android:text="@string/signIn"
-        style="@style/Widget.App.SignUpCtaMaterialStyle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

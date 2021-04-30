@@ -28,11 +28,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleText" />
 
-    <RelativeLayout
+    <androidx.cardview.widget.CardView
         android:id="@+id/imageContainer"
-        android:layout_width="@dimen/signup_display_pic_width"
-        android:layout_height="@dimen/signup_display_pic_height"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="@dimen/signup_avatar_height_land"
+        app:layout_constraintWidth_percent="@dimen/signup_avatar_width_land"
         android:layout_marginTop="@dimen/margin_vertical_large"
+        app:cardCornerRadius="@dimen/signup_avatar_corner_radius"
+        android:elevation="@dimen/signup_avatar_elevation"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -54,8 +58,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:contentDescription="@string/display_pic_content_description"
-            android:visibility="gone" />
-    </RelativeLayout>
+            android:visibility="gone"
+            />
+    </androidx.cardview.widget.CardView>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/firstNameContainer"
