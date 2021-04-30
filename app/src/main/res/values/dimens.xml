@@ -9,8 +9,14 @@
     <!-- Screen Margins End-->
 
     <!-- Avatar Region Start-->
-    <dimen name="signup_display_pic_width">120dp</dimen>
-    <dimen name="signup_display_pic_height">160dp</dimen>
+    <dimen name="signup_avatar_width_port">0.40</dimen>
+    <dimen name="signup_avatar_height_port">0.30</dimen>
+
+    <dimen name="signup_avatar_width_land">0.20</dimen>
+    <dimen name="signup_avatar_height_land">0.45</dimen>
+
+    <dimen name="signup_avatar_corner_radius">10dp</dimen>
+    <dimen name="signup_avatar_elevation">10dp</dimen>
     <!-- Avatar Region End-->
 
     <dimen name="signup_title_text_size">30sp</dimen>

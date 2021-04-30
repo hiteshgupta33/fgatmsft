@@ -15,8 +15,6 @@
 
     <!-- Avatar Button style   -->
     <style name="SignUpAvatarBtnStyle" parent="Widget.MaterialComponents.Button">
-        <item name="android:layout_width">@dimen/signup_display_pic_width</item>
-        <item name="android:layout_height">@dimen/signup_display_pic_height</item>
         <item name="android:background">@color/signup_grey_fifty</item>
         <item name="materialThemeOverlay">@style/GreyButtonThemeOverlay</item>
     </style>
@@ -27,8 +25,8 @@
 
     <!-- Avatar View style   -->
     <style name="SignUpAvatarViewStyle">
-        <item name="android:layout_width">@dimen/signup_display_pic_width</item>
-        <item name="android:layout_height">@dimen/signup_display_pic_height</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
         <item name="android:scaleType">fitXY</item>
     </style>
 
